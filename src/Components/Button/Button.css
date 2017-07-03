@@ -3,11 +3,13 @@ button {
   padding-left: 10px;
   color: #FFF;
   border: none;
-  height: 40px;
+  height: 50px;
   width: 200px;
   font-family: 'Audiowide', Arial, sans-serif;
   font-size: 18px;
   text-align: left;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .favorite-btn {
@@ -16,8 +18,8 @@ button {
 
 .favorite-count {
   position: absolute;
-  right: 4px;
-  top: 4px;
+  right: 10px;
+  top: 8px;
   padding: 5px 10px;
   background-color: #561011;
 }
@@ -26,14 +28,24 @@ button {
   background: rgba(73, 93, 150, 1) no-repeat url('../../assets/people.svg') 90%/auto 75%;
 }
 
+.people-btn:hover {
+  background: rgba(73, 93, 150, 1) no-repeat url('../../assets/people-hover.svg') 90%/auto 75%;
+}
+
 .planets-btn {
   background: rgba(73, 93, 150, 0.8) no-repeat url('../../assets/planets.svg') 90%/auto 75%;
+}
 
+.planets-btn:hover {
+  background: rgba(73, 93, 150, 0.8) no-repeat url('../../assets/planets-hover.svg') 90%/auto 75%;
 }
 
 .vehicles-btn {
   background: rgba(73, 93, 150, 0.6) no-repeat url('../../assets/vehicles.svg') 90%/auto 75%;
+}
 
+.vehicles-btn:hover {
+  background: rgba(73, 93, 150, 0.6) no-repeat url('../../assets/vehicles-hover.svg') 90%/auto 75%;
 }
 
 button:hover {
