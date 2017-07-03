@@ -1,0 +1,11 @@
+.fav-icon {
+  background: no-repeat url('../../assets/favorite.svg') 90%/auto 75%;
+}
+
+.favorited {
+  background: no-repeat url('../../assets/favorite-active.svg') 90%/auto 75%;
+}
+
+.fav-icon:hover {
+  background: no-repeat url('../../assets/favorite-hover.svg') 90%/auto 75%;
+}

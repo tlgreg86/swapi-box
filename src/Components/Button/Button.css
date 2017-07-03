@@ -23,15 +23,17 @@ button {
 }
 
 .people-btn {
-  background-color: rgba(73, 93, 150, 1);
+  background: rgba(73, 93, 150, 1) no-repeat url('../../assets/people.svg') 90%/auto 75%;
 }
 
 .planets-btn {
-  background-color: rgba(73, 93, 150, 0.8);
+  background: rgba(73, 93, 150, 0.8) no-repeat url('../../assets/planets.svg') 90%/auto 75%;
+
 }
 
 .vehicles-btn {
-  background-color: rgba(73, 93, 150, 0.6);
+  background: rgba(73, 93, 150, 0.6) no-repeat url('../../assets/vehicles.svg') 90%/auto 75%;
+
 }
 
 button:hover {
