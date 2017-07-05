@@ -3,7 +3,6 @@ import Card from '../Card/Card'
 import './CardList.css';
 
 const CardList = ({ peopleData }) => {
-  console.log(peopleData);
   return (
     <div className='card-list'>
       {peopleData.map((person, index) =>
