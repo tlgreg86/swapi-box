@@ -1,7 +1,6 @@
 .scroll {
   padding: 25px;
   margin: 20px 0;
-  /*background-color: #323232;*/
   background-color: #000000;
   background-size: cover;
   height: 200px;
@@ -21,10 +20,10 @@
 
 .intro-line {
   padding-bottom: 400px;
-  color: #1B7DEB;
+  color: #485F95;
 }
 
-.episode-title {
+.scroll-date {
   padding-bottom: 50px;
 }
 
