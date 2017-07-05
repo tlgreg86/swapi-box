@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import Scroll from '../Scroll/Scroll';
 import ButtonList from '../ButtonList/ButtonList';
 import CardList from '../CardList/CardList';
+import fetchCall from '../../utils/helper';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      people: [],
       scroll: [],
       selectedTab: 'FAVORITES'
     }
-    
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -28,11 +30,17 @@ class App extends Component {
     this.setState({
       selectedTab: e.target.innerText.substring(0, 9)
     })
-    console.log('clicked', e.target.innerText);
   }
+
+
 
   componentWillMount() {
     this.scrollCall()
+    fetchCall().then(data => {
+      this.setState({
+        people: data
+      })
+    })
   }
 
   render() {
@@ -42,7 +50,7 @@ class App extends Component {
         <div className='list-container'>
           <ButtonList selectedTab={this.state.selectedTab}
                       handleClick={this.handleClick} />
-          <CardList />
+          <CardList peopleData={this.state.people}/>
         </div>
       </div>
     );
