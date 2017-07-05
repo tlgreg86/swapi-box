@@ -6,10 +6,13 @@ import './App.css';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      scroll: []
+      scroll: [],
+      selectedTab: 'FAVORITES'
     }
+    
+    this.handleClick = this.handleClick.bind(this);
   }
 
   scrollCall() {
@@ -21,6 +24,13 @@ class App extends Component {
       })
   }
 
+  handleClick(e) {
+    this.setState({
+      selectedTab: e.target.innerText.substring(0, 9)
+    })
+    console.log('clicked', e.target.innerText);
+  }
+
   componentWillMount() {
     this.scrollCall()
   }
@@ -30,7 +40,8 @@ class App extends Component {
       <div className='App'>
         <Scroll scroll={this.state.scroll}/>
         <div className='list-container'>
-          <ButtonList />
+          <ButtonList selectedTab={this.state.selectedTab}
+                      handleClick={this.handleClick} />
           <CardList />
         </div>
       </div>

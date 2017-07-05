@@ -49,6 +49,10 @@ button {
   background: rgba(73, 93, 150, 0.6) no-repeat url('../../assets/vehicles-hover.svg') 90%/auto 75%;
 }
 
+.active {
+  border-left: 2px solid #EDDF00;
+}
+
 button:hover {
   color: #EDDF00;
 }
