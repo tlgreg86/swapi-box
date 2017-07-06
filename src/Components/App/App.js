@@ -65,7 +65,7 @@ class App extends Component {
         <div className='list-container'>
           <ButtonList selectedTab={this.state.selectedTab}
                       handleClick={this.handleClick} />
-          <CardList peopleData={this.state.people}/>
+          <CardList data={this.state.planets}/>
         </div>
       </div>
     );
