@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Scroll from '../Scroll/Scroll';
 import ButtonList from '../ButtonList/ButtonList';
 import CardList from '../CardList/CardList';
-import fetchCall from '../../utils/helper';
+import { fetchPeople, fetchPlanets } from '../../utils/helper';
 import './App.css';
 
 class App extends Component {
@@ -34,9 +34,10 @@ class App extends Component {
 
 
 
-  componentWillMount() {
+  componentDidMount() {
     this.scrollCall()
-    fetchCall().then(data => {
+    fetchPeople().then(data => {
+      console.log('willMount', data);
       this.setState({
         people: data
       })
