@@ -34,7 +34,49 @@ const fetchPeople = () => {
 }
 
 const fetchPlanets = () => {
-
+  return fetch('http://swapi.co/api/planets')
+    .then( response => response.json())
+    .then( value => {
+      let planets = value.results.map( planet => {
+        return { name: planet.name,
+                 terrain: planet.terrain,
+                 population: planet.population,
+                 climate: planet.climate
+               }
+      });
+      
+      const residentsArray = value.results.map( (planet, i) => {
+        const residentsPromisesArray = planet.residents.map( resident => 
+          fetch(resident)
+            .then( response => response.json())
+        )
+        let residents;
+        return Promise.all(residentsPromisesArray)
+          .then( data => {
+            residents = data.reduce( (acc, planet) => {
+              acc.push(planet.name);
+              return acc;
+            }, [])
+            return Object.assign(planets[i], {residents: residents})
+          })
+      })
+      return planets;
+    })
 }
 
-export { fetchPeople, fetchPlanets };
+const fetchVehicles = () => {
+  return fetch('http://swapi.co/api/vehicles')
+    .then( response => response.json())
+    .then( value => {
+      let vehicles = value.results.map( vehicle => {
+        return { name: vehicle.name,
+                 model: vehicle.model, 
+                 vehicleClass: vehicle.vehicle_class, 
+                 numPassengers: vehicle.passengers
+               }
+    });
+    return vehicles;
+  })
+}
+
+export { fetchPeople, fetchPlanets, fetchVehicles };
