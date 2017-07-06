@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Scroll from '../Scroll/Scroll';
 import ButtonList from '../ButtonList/ButtonList';
 import CardList from '../CardList/CardList';
-import { fetchPeople, fetchPlanets } from '../../utils/helper';
+import { fetchPeople, fetchPlanets, fetchVehicles } from '../../utils/helper';
 import './App.css';
 
 class App extends Component {
@@ -10,6 +10,8 @@ class App extends Component {
     super();
     this.state = {
       people: [],
+      planets: [],
+      vehicles: [],
       scroll: [],
       selectedTab: 'FAVORITES'
     }
@@ -35,13 +37,25 @@ class App extends Component {
 
 
   componentDidMount() {
-    this.scrollCall()
-    fetchPeople().then(data => {
-      console.log('willMount', data);
-      this.setState({
-        people: data
-      })
-    })
+    this.scrollCall();
+    fetchPeople()
+      .then(data => {
+        this.setState({
+          people: data
+        })
+      });
+    fetchPlanets()
+      .then(data => {
+        this.setState({
+          planets: data
+        })
+      });
+    fetchVehicles()
+      .then(data => {
+        this.setState({
+          vehicles: data
+        })
+      });
   }
 
   render() {
