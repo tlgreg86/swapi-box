@@ -1,23 +1,40 @@
-const fetchCall = () => {
-  let p1 = fetch('http://swapi.co/api/people/')
-      .then(response => response.json())
+const fetchPeople = () => {
+  return fetch('http://swapi.co/api/people')
+    .then( response => response.json())
+    .then( value => {
+      let people = value.results.map( person => {
+        return { name: person.name }
+      });
 
-  return Promise.all([p1])
-    .then(values => {
-      return scrubData(values);
+      const planetPromisesArray = value.results.map( person =>
+        fetch(person.homeworld)
+          .then( response => response.json())
+      )
+
+      return Promise.all(planetPromisesArray)
+        .then( data => {
+
+          people = data.map( (planet, i) => {
+            return Object.assign(people[i], {homeworld: planet.name, population: planet.population})
+          })
+
+          const speciesPromisesArray = value.results.map( person =>
+            fetch(person.species)
+              .then( response => response.json())
+          )
+
+          return Promise.all(speciesPromisesArray)
+            .then( data =>
+              people = data.map( (species, i) => {
+                return Object.assign(people[i], {species: species.name})
+              })
+            )
+        })
     })
 }
 
-const scrubData = (data) => {
-  const details = data[0].results.map(person => {
-    return {
-      name: person.name,
-      homeworld: person.homeworld,
-      species: person.species[0],
-      population: person.homeworld
-    }
-  })
-  return details;
+const fetchPlanets = () => {
+
 }
 
-export default fetchCall;
+export { fetchPeople, fetchPlanets };

@@ -10,18 +10,8 @@ const CardList = ({ peopleData }) => {
               name={person.name}
               homeworld={person.homeworld}
               species={person.species}
-              population={person.homeworld}/>
+              population={person.population}/>
       )}
-
-      <Card name={'Tattoine'}
-            terrain={'rough'}
-            population={'150000'}
-            climate={'dry'}
-            residents={'Luke Skywalker'}/>
-      <Card name={'AT-AT'}
-            model={'F-150'}
-            class={'pickup'}
-            numPassengers={'8'}/>
     </div>
   );
 }
