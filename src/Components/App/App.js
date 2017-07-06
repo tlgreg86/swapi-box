@@ -9,6 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      favorites: [],
       people: [],
       planets: [],
       vehicles: [],
@@ -59,13 +60,17 @@ class App extends Component {
   }
 
   render() {
+
+    let stateVar = this.state.selectedTab.toLowerCase()
+
     return (
       <div className='App'>
         <Scroll scroll={this.state.scroll}/>
         <div className='list-container'>
           <ButtonList selectedTab={this.state.selectedTab}
-                      handleClick={this.handleClick} />
-          <CardList data={this.state.planets}/>
+                      handleClick={this.handleClick}
+                      count={this.state.favorites.length}/>
+                    <CardList data={this.state[stateVar]}/>
         </div>
       </div>
     );
