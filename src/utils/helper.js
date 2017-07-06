@@ -44,9 +44,9 @@ const fetchPlanets = () => {
                  climate: planet.climate
                }
       });
-      
+
       const residentsArray = value.results.map( (planet, i) => {
-        const residentsPromisesArray = planet.residents.map( resident => 
+        const residentsPromisesArray = planet.residents.map( resident =>
           fetch(resident)
             .then( response => response.json())
         )
@@ -57,7 +57,8 @@ const fetchPlanets = () => {
               acc.push(planet.name);
               return acc;
             }, [])
-            return Object.assign(planets[i], {residents: residents})
+            residents = residents.length ? residents : ['none']
+            return Object.assign(planets[i], {residents: residents.join(', ')})
           })
       })
       return planets;
@@ -70,8 +71,8 @@ const fetchVehicles = () => {
     .then( value => {
       let vehicles = value.results.map( vehicle => {
         return { name: vehicle.name,
-                 model: vehicle.model, 
-                 vehicleClass: vehicle.vehicle_class, 
+                 model: vehicle.model,
+                 vehicleClass: vehicle.vehicle_class,
                  numPassengers: vehicle.passengers
                }
     });

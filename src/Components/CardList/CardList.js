@@ -2,15 +2,22 @@ import React from 'react';
 import Card from '../Card/Card'
 import './CardList.css';
 
-const CardList = ({ peopleData }) => {
+const CardList = ({ data }) => {
   return (
     <div className='card-list'>
-      {peopleData.map((person, index) =>
+      {data.map((article, index) =>
         <Card key={index}
-              name={person.name}
-              homeworld={person.homeworld}
-              species={person.species}
-              population={person.population}/>
+              name={article.name}
+              homeworld={article.homeworld}
+              species={article.species}
+              population={article.population}
+              terrain={article.terrain}
+              climate={article.climate}
+              residents={article.residents}
+              model={article.model}
+              vehicleClass={article.vehicleClass}
+              numPassengers={article.numPassengers}
+              />
       )}
     </div>
   );
