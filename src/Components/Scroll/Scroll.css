@@ -1,21 +1,21 @@
 .scroll {
+  height: 200px;
   padding: 25px;
   margin: 20px 0;
   background-color: #000000;
   background-size: cover;
-  height: 200px;
-  perspective: 100px;
   overflow: hidden;
+  perspective: 100px;
 }
 
 .scroll-container {
   position: relative;
   height: 200px;
-  font-size: 2em;
+  animation: scroll-up 45s linear infinite;
   color: #EDDF00;
+  font-size: 2em;
   transform: translateY(100%);
   transform-origin: 50% 100%;
-  animation: scroll-up 45s linear infinite;
 }
 
 .intro-line {
