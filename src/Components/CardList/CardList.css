@@ -6,3 +6,15 @@
   padding: 20px;
   background-color: #73151A;
 }
+
+.people {
+  background-color: rgba(73, 93, 150, 1);
+}
+
+.planets {
+  background-color: rgba(73, 93, 150, 0.8);
+}
+
+.vehicles {
+  background-color: rgba(73, 93, 150, 0.6);
+}
