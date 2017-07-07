@@ -31,6 +31,7 @@ const fetchPeople = () => {
             )
         })
     })
+    .catch( err => console.log('404 man....'));
 }
 
 const fetchPlanets = () => {
@@ -63,6 +64,7 @@ const fetchPlanets = () => {
       })
       return planets;
     })
+    .catch( err => console.log('404 man....'));
 }
 
 const fetchVehicles = () => {
@@ -78,6 +80,7 @@ const fetchVehicles = () => {
     });
     return vehicles;
   })
+  .catch( err => console.log('404 man....'));
 }
 
 export { fetchPeople, fetchPlanets, fetchVehicles };
