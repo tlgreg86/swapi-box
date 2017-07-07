@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import './ButtonList.css';
 
@@ -24,6 +25,12 @@ const ButtonList = ({selectedTab, handleClick, count}) => {
               handleClick={handleClick}/>
     </div>
   );
+}
+
+ButtonList.propTypes = {
+  selectedTab: PropTypes.string,
+  handleClick: PropTypes.func,
+  count: PropTypes.number
 }
 
 export default ButtonList;
