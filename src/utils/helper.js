@@ -1,5 +1,5 @@
 const fetchPeople = () => {
-  return fetch('http://swapi.co/api/people')
+  return fetch('http://swapi.co/api/people/')
     .then( response => response.json())
     .then( value => {
       let people = value.results.map( person => {
@@ -34,7 +34,7 @@ const fetchPeople = () => {
 }
 
 const fetchPlanets = () => {
-  return fetch('http://swapi.co/api/planets')
+  return fetch('http://swapi.co/api/planets/')
     .then( response => response.json())
     .then( value => {
       let planets = value.results.map( planet => {
@@ -45,7 +45,7 @@ const fetchPlanets = () => {
                }
       });
 
-      const residentsArray = value.results.map( (planet, i) => {
+      value.results.map( (planet, i) => {
         const residentsPromisesArray = planet.residents.map( resident =>
           fetch(resident)
             .then( response => response.json())
@@ -66,7 +66,7 @@ const fetchPlanets = () => {
 }
 
 const fetchVehicles = () => {
-  return fetch('http://swapi.co/api/vehicles')
+  return fetch('http://swapi.co/api/vehicles/')
     .then( response => response.json())
     .then( value => {
       let vehicles = value.results.map( vehicle => {
