@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Button.css';
 
 const Button = ({ value, btnClass, count, handleClick, selectedTab }) => {
@@ -10,6 +11,14 @@ const Button = ({ value, btnClass, count, handleClick, selectedTab }) => {
       {count && <div className='favorite-count'>{count}</div>}
     </button>
   );
+}
+
+Button.propTypes = {
+  value: PropTypes.string,
+  btnClass: PropTypes.string,
+  count: PropTypes.string,
+  handleClick: PropTypes.func,
+  selectedTab: PropTypes.string
 }
 
 export default Button;

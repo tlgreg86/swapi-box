@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 
 const Card = ({article, handleFavorites}) => {
@@ -31,6 +32,11 @@ const Card = ({article, handleFavorites}) => {
       <div className={'fav-icon '  + favoritedClass} onClick={() => handleFavorites(article)}></div>
     </div>
   );
+}
+
+Card.propTypes = {
+  article: PropTypes.object,
+  handleFavorites: PropTypes.func
 }
 
 export default Card;
