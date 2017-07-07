@@ -18,6 +18,7 @@ class App extends Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleFavorites = this.handleFavorites.bind(this);
   }
 
   scrollCall() {
@@ -35,7 +36,10 @@ class App extends Component {
     })
   }
 
-
+  handleFavorites(article) {
+    this.state.favorites.push(article);
+    this.setState({ favorites: this.state.favorites });
+  }
 
   componentDidMount() {
     this.scrollCall();
@@ -61,7 +65,7 @@ class App extends Component {
 
   render() {
 
-    let stateVar = this.state.selectedTab.toLowerCase()
+    let stateVar = this.state.selectedTab.toLowerCase();
 
     return (
       <div className='App'>
@@ -71,7 +75,8 @@ class App extends Component {
                       handleClick={this.handleClick}
                       count={this.state.favorites.length}/>
                     <CardList data={this.state[stateVar]}
-                              selectedTab={this.state.selectedTab}/>
+                              selectedTab={this.state.selectedTab}
+                              handleFavorites={this.handleFavorites}/>
         </div>
       </div>
     );
