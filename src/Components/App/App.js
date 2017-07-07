@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 import Scroll from '../Scroll/Scroll';
 import ButtonList from '../ButtonList/ButtonList';
 import CardList from '../CardList/CardList';
-import fetchCall from '../../utils/helper';
+import { fetchPeople, fetchPlanets, fetchVehicles } from '../../utils/helper';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      favorites: [],
       people: [],
-      scroll: [],
+      planets: [],
+      vehicles: [],
+      scroll: {},
       selectedTab: 'FAVORITES'
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleFavorites = this.handleFavorites.bind(this);
   }
 
   scrollCall() {
@@ -32,25 +36,56 @@ class App extends Component {
     })
   }
 
+  checkForDuplicates(article) {
+    return this.state.favorites.indexOf(article)
+  }
 
+  handleFavorites(article) {
+    let index = this.checkForDuplicates(article)
+    index === -1 ?
+      this.state.favorites.push(article) : this.state.favorites.splice(index, 1)
 
-  componentWillMount() {
-    this.scrollCall()
-    fetchCall().then(data => {
-      this.setState({
-        people: data
-      })
-    })
+    !article.favorited ?
+      article.favorited = true : article.favorited = !article.favorited;
+    this.setState({ favorites: this.state.favorites });
+  }
+
+  componentDidMount() {
+    this.scrollCall();
+    fetchPeople()
+      .then(data => {
+        this.setState({
+          people: data
+        })
+      });
+    fetchPlanets()
+      .then(data => {
+        this.setState({
+          planets: data
+        })
+      });
+    fetchVehicles()
+      .then(data => {
+        this.setState({
+          vehicles: data
+        })
+      });
   }
 
   render() {
+
+    let stateVar = this.state.selectedTab.toLowerCase();
+
     return (
       <div className='App'>
         <Scroll scroll={this.state.scroll}/>
         <div className='list-container'>
           <ButtonList selectedTab={this.state.selectedTab}
-                      handleClick={this.handleClick} />
-          <CardList peopleData={this.state.people}/>
+                      handleClick={this.handleClick}
+                      count={this.state.favorites.length}/>
+                    <CardList data={this.state[stateVar]}
+                              selectedTab={this.state.selectedTab}
+                              handleFavorites={this.handleFavorites}/>
         </div>
       </div>
     );

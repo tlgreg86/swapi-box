@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './Scroll.css';
 
 const Scroll = ({ scroll }) => {
+  console.log(scroll);
   return (
     <div className='scroll'>
       <div className='scroll-container'>
@@ -13,6 +15,10 @@ const Scroll = ({ scroll }) => {
       </div>
     </div>
   );
+}
+
+Scroll.propTypes = {
+  scroll: PropTypes.object
 }
 
 export default Scroll;

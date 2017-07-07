@@ -12,16 +12,16 @@
 }
 
 .card-section-title {
+  margin-bottom: 0;
   font-style: italic;
   font-weight: normal;
-  margin-bottom: 0;
 }
 
 .fav-icon {
   position: absolute;
   right: 5px;
   bottom: 0;
-  width: 100%;
+  width: 36px;
   height: 60px;
   background: no-repeat url('../../assets/favorite.svg') right/auto 75%;
 }
