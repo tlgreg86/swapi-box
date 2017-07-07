@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '../Button/Button';
 import './ButtonList.css';
 
@@ -7,7 +7,7 @@ const ButtonList = ({selectedTab, handleClick, count}) => {
     <div className='button-list'>
       <Button value={'FAVORITES'}
               btnClass={'favorite-btn'}
-              count={count + ''} 
+              count={count + ''}
               selectedTab={selectedTab}
               handleClick={handleClick}/>
       <Button value={'PEOPLE'}
