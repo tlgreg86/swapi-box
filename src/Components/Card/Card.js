@@ -1,32 +1,21 @@
 import React from 'react';
 import './Card.css';
 
-// const Card = ({ name,
-//                 homeworld,
-//                 species,
-//                 population,
-//                 terrain,
-//                 climate,
-//                 residents,
-//                 model,
-//                 vehicleClass,
-//                 numPassengers,
-//                 handleFavorites }) => {
-
-
 const Card = ({article, handleFavorites}) => {
   let { name,
-                  homeworld,
-                  species,
-                  population,
-                  terrain,
-                  climate,
-                  residents,
-                  model,
-                  vehicleClass,
-                  numPassengers } = article;
-  
-  
+        homeworld,
+        species,
+        population,
+        terrain,
+        climate,
+        residents,
+        model,
+        vehicleClass,
+        numPassengers,
+        favorited } = article;
+
+  let favoritedClass = favorited ? 'favorited' : ''
+
   return (
     <div className='card'>
       <h2 className='card-title'>{name}</h2>
@@ -39,7 +28,7 @@ const Card = ({article, handleFavorites}) => {
       {model && <div><h3 className='card-section-title'>Model</h3><p>{model}</p></div>}
       {vehicleClass && <div><h3 className='card-section-title'>Class</h3><p>{vehicleClass}</p></div>}
       {numPassengers && <div><h3 className='card-section-title'>Number of Passengers</h3><p>{numPassengers}</p></div>}
-      <div className='fav-icon' onClick={() => handleFavorites(article)}></div>
+      <div className={'fav-icon '  + favoritedClass} onClick={() => handleFavorites(article)}></div>
     </div>
   );
 }

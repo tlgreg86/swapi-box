@@ -36,8 +36,17 @@ class App extends Component {
     })
   }
 
+  checkForDuplicates(article) {
+    return this.state.favorites.indexOf(article)
+  }
+
   handleFavorites(article) {
-    this.state.favorites.push(article);
+    let index = this.checkForDuplicates(article)
+    index === -1 ?
+      this.state.favorites.push(article) : this.state.favorites.splice(index, 1)
+      
+    !article.favorited ?
+      article.favorited = true : article.favorited = !article.favorited;
     this.setState({ favorites: this.state.favorites });
   }
 
