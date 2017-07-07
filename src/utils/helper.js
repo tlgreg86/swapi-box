@@ -69,6 +69,7 @@ const fetchVehicles = () => {
   return fetch('http://swapi.co/api/vehicles/')
     .then( response => response.json())
     .then( value => {
+      console.log(value);
       let vehicles = value.results.map( vehicle => {
         return { name: vehicle.name,
                  model: vehicle.model,

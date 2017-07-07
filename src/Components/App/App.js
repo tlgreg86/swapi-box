@@ -73,7 +73,6 @@ class App extends Component {
   }
 
   render() {
-
     let stateVar = this.state.selectedTab.toLowerCase();
 
     return (
@@ -83,9 +82,9 @@ class App extends Component {
           <ButtonList selectedTab={this.state.selectedTab}
                       handleClick={this.handleClick}
                       count={this.state.favorites.length}/>
-                    <CardList data={this.state[stateVar]}
-                              selectedTab={this.state.selectedTab}
-                              handleFavorites={this.handleFavorites}/>
+          <CardList data={this.state[stateVar]}
+                    selectedTab={this.state.selectedTab}
+                    handleFavorites={this.handleFavorites}/>
         </div>
       </div>
     );
