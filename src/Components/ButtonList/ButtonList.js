@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import './ButtonList.css';
 
-const ButtonList = ({selectedTab, handleClick, count}) => {
+const ButtonList = ({ selectedTab, handleClick, count }) => {
   return (
     <div className='button-list'>
       <Button value={'FAVORITES'}
