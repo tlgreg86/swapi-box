@@ -33,7 +33,7 @@ class App extends Component {
   handleState(key, data) {
     this.setState({
       [key]: data
-    })
+    });
   }
 
   handleClick(e) {
@@ -51,7 +51,7 @@ class App extends Component {
     const favoritesState = this.state.favorites;
 
     index === -1 ?
-      favoritesState.push(article) : favoritesState.splice(index, 1)
+      favoritesState.push(article) : favoritesState.splice(index, 1);
 
     !article.favorited ?
       article.favorited = true : article.favorited = !article.favorited;
@@ -70,14 +70,14 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Scroll scroll={ this.state.scroll } />
+        <Scroll scroll={this.state.scroll} />
         <div className='list-container'>
-          <ButtonList selectedTab={ this.state.selectedTab }
-                      handleClick={ this.handleClick }
-                      count={ this.state.favorites.length } />
-          <CardList data={ this.state[stateVar] }
-                    selectedTab={ this.state.selectedTab }
-                    handleFavorites={ this.handleFavorites } />
+          <ButtonList selectedTab={this.state.selectedTab}
+                      handleClick={this.handleClick}
+                      count={this.state.favorites.length} />
+          <CardList data={this.state[stateVar]}
+                    selectedTab={this.state.selectedTab}
+                    handleFavorites={this.handleFavorites} />
         </div>
       </div>
     );

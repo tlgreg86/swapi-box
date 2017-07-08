@@ -6,10 +6,10 @@ import './CardList.css';
 const CardList = ({ data, selectedTab, handleFavorites }) => {
   let cardListContent;
   if (data.length) {
-    cardListContent = data.map((article, index) =>
-    <Card key={ index }
-          article={ article }
-          handleFavorites={ handleFavorites } />
+    cardListContent = data.map( (article, index) =>
+      <Card key={index}
+            article={article}
+            handleFavorites={handleFavorites} />
     )
   } else {
     cardListContent = <img src='./loader.gif' alt='Loading...' />

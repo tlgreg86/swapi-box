@@ -10,19 +10,19 @@ const ButtonList = ({ selectedTab, handleClick, count }) => {
               btnClass={'favorite-btn'}
               count={count + ''}
               selectedTab={selectedTab}
-              handleClick={handleClick}/>
+              handleClick={handleClick} />
       <Button value={'PEOPLE'}
               btnClass={'people-btn'}
               selectedTab={selectedTab}
-              handleClick={handleClick}/>
+              handleClick={handleClick} />
       <Button value={'PLANETS'}
               btnClass={'planets-btn'}
               selectedTab={selectedTab}
-              handleClick={handleClick}/>
+              handleClick={handleClick} />
       <Button value={'VEHICLES'}
               btnClass={'vehicles-btn'}
               selectedTab={selectedTab}
-              handleClick={handleClick}/>
+              handleClick={handleClick} />
     </div>
   );
 }

@@ -11,27 +11,28 @@ const fetchPeople = () => {
       const planetPromisesArray = value.results.map( person =>
         fetch(person.homeworld)
           .then( response => response.json())
-      )
+      );
 
       Promise.all(planetPromisesArray)
         .then( data => {
           people = data.map( (planet, i) =>
-            Object.assign(people[i], { homeworld: planet.name,
-                                       population: numeral(planet.population).format('0,0') })
-          )
-        })
+            Object.assign(people[i], 
+                          { homeworld: planet.name,
+                            population: numeral(planet.population).format('0,0') })
+          );
+        });
 
       const speciesPromisesArray = value.results.map( person =>
         fetch(person.species)
-        .then( response => response.json())
-      )
+          .then( response => response.json())
+      );
 
       return Promise.all(speciesPromisesArray)
         .then( data =>
           people = data.map( (species, i) =>
             Object.assign(people[i], { species: species.name })
           )
-        )
+        );
     })
     .catch( err => console.log('404 man....'));
 }
@@ -52,16 +53,16 @@ const fetchPlanets = () => {
         const residentsPromisesArray = planet.residents.map( resident =>
           fetch(resident)
             .then( response => response.json())
-        )
+        );
         let residents;
         return Promise.all(residentsPromisesArray)
           .then( data => {
             residents = data.reduce( (acc, planet) => {
               acc.push(planet.name);
               return acc;
-            }, [])
-            residents = residents.length ? residents : ['none']
-            return Object.assign(planets[i], {residents: residents.join(', ')})
+            }, []);
+            residents = residents.length ? residents : ['none'];
+            return Object.assign(planets[i], {residents: residents.join(', ')});
           })
       })
       return planets;
