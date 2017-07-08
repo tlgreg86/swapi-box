@@ -1,3 +1,5 @@
+import numeral from 'numeral';
+
 const fetchPeople = () => {
   return fetch('http://swapi.co/api/people/')
     .then( response => response.json())
@@ -15,7 +17,7 @@ const fetchPeople = () => {
         .then( data => {
           people = data.map( (planet, i) =>
             Object.assign(people[i], { homeworld: planet.name,
-                                       population: planet.population })
+                                       population: numeral(planet.population).format('0,0') })
           )
         })
 
@@ -41,7 +43,7 @@ const fetchPlanets = () => {
       let planets = value.results.map( planet => {
         return { name: planet.name,
                  terrain: planet.terrain,
-                 population: planet.population,
+                 population: numeral(planet.population).format('0,0'),
                  climate: planet.climate
                }
       });
