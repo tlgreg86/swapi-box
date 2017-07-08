@@ -7,7 +7,7 @@ const Button = ({ value, btnClass, count, handleClick, selectedTab }) => {
     'active' : '';
 
   return (
-    <button className={btnClass + ' ' + activeClass} onClick={handleClick}>
+    <button className={`${btnClass} ${activeClass}`} onClick={handleClick}>
       { value }
       { count && <div className='favorite-count'>{count}</div> }
     </button>

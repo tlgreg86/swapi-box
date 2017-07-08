@@ -27,7 +27,7 @@ const CardList = ({ data, selectedTab, handleFavorites }) => {
   }
 
   return (
-    <div className={'card-list ' + selectedTab.toLowerCase()}>
+    <div className={`card-list ${selectedTab.toLowerCase()}`}>
       { cardListContent }
     </div>
   );

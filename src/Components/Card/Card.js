@@ -29,7 +29,7 @@ const Card = ({ article, handleFavorites }) => {
       { model && <div><h3 className='card-section-title'>Model</h3><p>{model}</p></div> }
       { vehicleClass && <div><h3 className='card-section-title'>Class</h3><p>{vehicleClass}</p></div> }
       { numPassengers && <div><h3 className='card-section-title'>Number of Passengers</h3><p>{numPassengers}</p></div> }
-      <div className={'fav-icon '  + favoritedClass} onClick={() => handleFavorites(article)}></div>
+      <div className={`fav-icon ${favoritedClass}`} onClick={() => handleFavorites(article)}></div>
     </div>
   );
  }

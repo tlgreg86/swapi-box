@@ -8,7 +8,7 @@ const ButtonList = ({ selectedTab, handleClick, count }) => {
     <div className='button-list'>
       <Button value={'FAVORITES'}
               btnClass={'favorite-btn'}
-              count={count + ''}
+              count={String(count)}
               selectedTab={selectedTab}
               handleClick={handleClick} />
       <Button value={'PEOPLE'}
