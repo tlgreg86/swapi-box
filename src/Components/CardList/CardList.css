@@ -1,10 +1,13 @@
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   width: 100%;
   padding: 20px;
   background-color: #73151A;
+}
+
+.inner-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .people {

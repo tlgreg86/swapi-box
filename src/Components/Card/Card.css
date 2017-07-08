@@ -33,3 +33,8 @@
 .fav-icon:hover {
   background: no-repeat url('../../assets/favorite-hover.svg') right/auto 75%;
 }
+
+.fix-flex-orphans {
+  width: 240px;
+  margin: 10px;
+}

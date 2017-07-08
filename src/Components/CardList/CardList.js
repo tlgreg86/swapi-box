@@ -6,17 +6,28 @@ import './CardList.css';
 const CardList = ({ data, selectedTab, handleFavorites }) => {
   let cardListContent;
   if (data.length) {
-    cardListContent = data.map((article, index) =>
-    <Card key={ index }
-          article={ article }
-          handleFavorites={ handleFavorites } />
-    )
+    cardListContent = 
+      <div className={'inner-card-container'}>
+        {data.map( (article, index) =>
+          <Card key={index}
+                article={article}
+                handleFavorites={handleFavorites} />
+        )}
+        <div className='fix-flex-orphans'></div>
+        <div className='fix-flex-orphans'></div>
+        <div className='fix-flex-orphans'></div>
+        <div className='fix-flex-orphans'></div>
+        <div className='fix-flex-orphans'></div>
+        <div className='fix-flex-orphans'></div>
+        <div className='fix-flex-orphans'></div>
+        <div className='fix-flex-orphans'></div>
+      </div>
   } else {
-    cardListContent = <img src='./loader.gif' alt='Loading...' />
+    cardListContent = <img className='loader' src='./loader.gif' alt='Loading...' />
   }
 
   return (
-    <div className={'card-list ' + selectedTab.toLowerCase()}>
+    <div className={`card-list ${selectedTab.toLowerCase()}`}>
       { cardListContent }
     </div>
   );

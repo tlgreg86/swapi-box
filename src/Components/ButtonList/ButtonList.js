@@ -8,21 +8,21 @@ const ButtonList = ({ selectedTab, handleClick, count }) => {
     <div className='button-list'>
       <Button value={'FAVORITES'}
               btnClass={'favorite-btn'}
-              count={count + ''}
+              count={String(count)}
               selectedTab={selectedTab}
-              handleClick={handleClick}/>
+              handleClick={handleClick} />
       <Button value={'PEOPLE'}
               btnClass={'people-btn'}
               selectedTab={selectedTab}
-              handleClick={handleClick}/>
+              handleClick={handleClick} />
       <Button value={'PLANETS'}
               btnClass={'planets-btn'}
               selectedTab={selectedTab}
-              handleClick={handleClick}/>
+              handleClick={handleClick} />
       <Button value={'VEHICLES'}
               btnClass={'vehicles-btn'}
               selectedTab={selectedTab}
-              handleClick={handleClick}/>
+              handleClick={handleClick} />
     </div>
   );
 }
