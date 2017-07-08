@@ -42,35 +42,17 @@ describe('App tests', () => {
     expect(typeof wrapper.state().selectedTab).toEqual('string');
   });
   
-  it('vehicles', async () => {
-    const mockVehicleFn = () => {
-      const mockVehicle = { results: [ { name: "Sand Crawler", 
-                                         model: "Digger Crawler", 
-                                         passengers: 0, 
-                                         vehicle_class: 'wheeled'}
-                                     ]
-                          }
-      
-    }
-    const wrapperMounted = mount(<App />);
-      
-    
-    expect(wrapper.state().vehicles).toEqual([]);
-  });
-  
-  it('scrollCall() should return an object containing a random scroll', () => {
-    fetchMock.get('http://swapi.co/api/people/', 
-      
-    )
-    .catch(unmatchedURL => {
-      console.log('boooo');
+  it('scrollCall() should return an object containing a random scroll', async () => {
+    fetchMock.get('begin:http://swapi.co/api/films/', {
+      status: 200, 
+      body: mockScroll
     })
+    .catch();
     
     const wrapperMounted = mount(<App />);
-    console.log(wrapperMounted.debug());
-    expect(1).toEqual(2);
-  })
-  
-  it('')
-  
+    await resolveAfter2Seconds();
+    
+    expect(fetchMock.called()).toEqual(true);
+    expect(wrapperMounted.state().scroll).toEqual(mockScroll);
+  });
 });
