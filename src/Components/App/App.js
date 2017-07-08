@@ -26,50 +26,43 @@ class App extends Component {
     fetch(`http://swapi.co/api/films/${randomNum}`)
       .then( response => response.json() )
       .then( scroll => {
-        this.setState({scroll: scroll})
-      })
+        this.setState({ scroll: scroll })
+      });
+  }
+
+  handleState(key, data) {
+    this.setState({
+      [key]: data
+    })
   }
 
   handleClick(e) {
     this.setState({
       selectedTab: e.target.innerText.substring(0, 9)
-    })
+    });
   }
 
   checkForDuplicates(article) {
-    return this.state.favorites.indexOf(article)
+    return this.state.favorites.indexOf(article);
   }
 
   handleFavorites(article) {
-    let index = this.checkForDuplicates(article)
+    const index = this.checkForDuplicates(article);
+    const favoritesState = this.state.favorites;
+
     index === -1 ?
-      this.state.favorites.push(article) : this.state.favorites.splice(index, 1)
+      favoritesState.push(article) : favoritesState.splice(index, 1)
 
     !article.favorited ?
       article.favorited = true : article.favorited = !article.favorited;
-    this.setState({ favorites: this.state.favorites });
+    this.handleState('favorites', favoritesState);
   }
 
   componentDidMount() {
     this.scrollCall();
-    fetchPeople()
-      .then(data => {
-        this.setState({
-          people: data
-        })
-      });
-    fetchPlanets()
-      .then(data => {
-        this.setState({
-          planets: data
-        })
-      });
-    fetchVehicles()
-      .then(data => {
-        this.setState({
-          vehicles: data
-        })
-      });
+    fetchPeople().then(data => this.handleState('people', data));
+    fetchPlanets().then(data => this.handleState('planets', data));
+    fetchVehicles().then(data => this.handleState('vehicles', data));
   }
 
   render() {
@@ -77,14 +70,14 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Scroll scroll={this.state.scroll}/>
+        <Scroll scroll={ this.state.scroll } />
         <div className='list-container'>
-          <ButtonList selectedTab={this.state.selectedTab}
-                      handleClick={this.handleClick}
-                      count={this.state.favorites.length}/>
-          <CardList data={this.state[stateVar]}
-                    selectedTab={this.state.selectedTab}
-                    handleFavorites={this.handleFavorites}/>
+          <ButtonList selectedTab={ this.state.selectedTab }
+                      handleClick={ this.handleClick }
+                      count={ this.state.favorites.length } />
+          <CardList data={ this.state[stateVar] }
+                    selectedTab={ this.state.selectedTab }
+                    handleFavorites={ this.handleFavorites } />
         </div>
       </div>
     );

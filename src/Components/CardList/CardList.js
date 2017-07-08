@@ -4,12 +4,12 @@ import Card from '../Card/Card'
 import './CardList.css';
 
 const CardList = ({ data, selectedTab, handleFavorites }) => {
-  let cardListContent
+  let cardListContent;
   if (data.length) {
     cardListContent = data.map((article, index) =>
-    <Card key={index}
-      article={article}
-      handleFavorites={handleFavorites} />
+    <Card key={ index }
+          article={ article }
+          handleFavorites={ handleFavorites } />
     )
   } else {
     cardListContent = <img src='./loader.gif' alt='Loading...' />
@@ -17,7 +17,7 @@ const CardList = ({ data, selectedTab, handleFavorites }) => {
 
   return (
     <div className={'card-list ' + selectedTab.toLowerCase()}>
-      {cardListContent}
+      { cardListContent }
     </div>
   );
 }

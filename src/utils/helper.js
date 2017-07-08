@@ -11,25 +11,25 @@ const fetchPeople = () => {
           .then( response => response.json())
       )
 
-      return Promise.all(planetPromisesArray)
+      Promise.all(planetPromisesArray)
         .then( data => {
-
-          people = data.map( (planet, i) => {
-            return Object.assign(people[i], {homeworld: planet.name, population: planet.population})
-          })
-
-          const speciesPromisesArray = value.results.map( person =>
-            fetch(person.species)
-              .then( response => response.json())
+          people = data.map( (planet, i) =>
+            Object.assign(people[i], { homeworld: planet.name,
+                                       population: planet.population })
           )
-
-          return Promise.all(speciesPromisesArray)
-            .then( data =>
-              people = data.map( (species, i) => {
-                return Object.assign(people[i], {species: species.name})
-              })
-            )
         })
+
+      const speciesPromisesArray = value.results.map( person =>
+        fetch(person.species)
+        .then( response => response.json())
+      )
+
+      return Promise.all(speciesPromisesArray)
+        .then( data =>
+          people = data.map( (species, i) =>
+            Object.assign(people[i], { species: species.name })
+          )
+        )
     })
     .catch( err => console.log('404 man....'));
 }
@@ -71,7 +71,6 @@ const fetchVehicles = () => {
   return fetch('http://swapi.co/api/vehicles/')
     .then( response => response.json())
     .then( value => {
-      console.log(value);
       let vehicles = value.results.map( vehicle => {
         return { name: vehicle.name,
                  model: vehicle.model,
