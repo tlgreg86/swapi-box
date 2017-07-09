@@ -16,3 +16,11 @@
 .list-container {
   display: flex;
 }
+
+@media only screen and (max-width: 715px) {
+
+  .list-container {
+    flex-direction: column;
+  }
+
+}
