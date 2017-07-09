@@ -56,13 +56,27 @@ class App extends Component {
     !article.favorited ?
       article.favorited = true : article.favorited = !article.favorited;
     this.handleState('favorites', favoritesState);
+    this.setStorage();
+  }
+
+  setStorage() {
+    localStorage.setItem('favorites', JSON.stringify(this.state.favorites));
+  }
+  
+  getStorage() {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
+    if (storedFavorites) {
+      this.handleState('favorites', storedFavorites);
+    }
   }
 
   componentDidMount() {
+    this.getStorage();
     this.scrollCall();
     fetchPeople().then(data => this.handleState('people', data));
     fetchPlanets().then(data => this.handleState('planets', data));
     fetchVehicles().then(data => this.handleState('vehicles', data));
+    
   }
 
   render() {
