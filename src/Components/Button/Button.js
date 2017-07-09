@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Button.css';
 
 const Button = ({ value, btnClass, count, handleClick, selectedTab }) => {
-  const activeClass = selectedTab.substring(0, 9) === value.substring(0, 9) ? 
+  const activeClass = selectedTab.substring(0, 9) === value.substring(0, 9) ?
     'active' : '';
 
   return (
