@@ -43,6 +43,8 @@ class App extends Component {
   }
 
   checkForDuplicates(article) {
+    console.log(article);
+    console.log(this.state.favorites.indexOf(article));
     return this.state.favorites.indexOf(article);
   }
 
@@ -56,13 +58,12 @@ class App extends Component {
     !article.favorited ?
       article.favorited = true : article.favorited = !article.favorited;
     this.handleState('favorites', favoritesState);
-    this.setStorage();
   }
 
   setStorage() {
     localStorage.setItem('favorites', JSON.stringify(this.state.favorites));
   }
-  
+
   getStorage() {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
     if (storedFavorites) {
@@ -71,12 +72,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getStorage();
+    // this.getStorage();
     this.scrollCall();
     fetchPeople().then(data => this.handleState('people', data));
     fetchPlanets().then(data => this.handleState('planets', data));
     fetchVehicles().then(data => this.handleState('vehicles', data));
-    
   }
 
   render() {
