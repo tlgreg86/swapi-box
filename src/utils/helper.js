@@ -16,7 +16,7 @@ const fetchPeople = () => {
       Promise.all(planetPromisesArray)
         .then( data => {
           people = data.map( (planet, i) =>
-            Object.assign(people[i], 
+            Object.assign(people[i],
                           { homeworld: planet.name,
                             population: numeral(planet.population).format('0,0') })
           );
