@@ -4,30 +4,24 @@ import ButtonList from './ButtonList';
 
 describe('ButtonList tests', () => {
 
-  const wrapper = shallow(<ButtonList />)
+  const wrapperShallow = shallow(<ButtonList />)
+
+  const mockedFn = jest.fn();
+  const wrapperMount = mount(<ButtonList selectedTab={''}
+                                    handleClick={mockedFn} />)
 
   it('should render button list', () => {
-    expect(wrapper.find('.button-list')).toHaveLength(1)
+    expect(wrapperShallow.find('.button-list')).toHaveLength(1)
   })
 
   it('should render four buttons', () => {
-    const mockedFn = jest.fn();
-    const wrapper = mount(<ButtonList selectedTab={''}
-                                      handleClick={mockedFn} />)
-
-    expect(wrapper.find('button')).toHaveLength(4)
+    expect(wrapperMount.find('button')).toHaveLength(4)
   })
 
-  // it('should render a Favorites button', () => {
-  //   const wrapper = mount(<ButtonList selectedTab={''} />);
-  //   console.log(wrapper.debug());
-  //
-  //   expect(wrapper.find('button').children().text()).toEqual('FAVORITES')
-  // })
-
-  // it('should render a People button')
-
-  // it('should render a Planets button')
-
-  // it('should render a Vehicles button')
+  it('should render Favorites, People, Planets, and Vehicles buttons', () => {
+    expect(wrapperMount.find('.button-list').childAt(0).hasClass('favorite-btn')).toEqual(true)
+    expect(wrapperMount.find('.button-list').childAt(1).hasClass('people-btn')).toEqual(true)
+    expect(wrapperMount.find('.button-list').childAt(2).hasClass('planets-btn')).toEqual(true)
+    expect(wrapperMount.find('.button-list').childAt(3).hasClass('vehicles-btn')).toEqual(true)
+  })
 });
