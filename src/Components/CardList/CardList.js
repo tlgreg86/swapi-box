@@ -4,11 +4,7 @@ import Card from '../Card/Card'
 import './CardList.css';
 
 const CardList = ({ data, selectedTab, handleFavorites }) => {
-  console.log(selectedTab);
   let cardListContent;
-  let yodaTalk = selectedTab === 'FAVORITES' ?
-    <div className='yoda-talk'>No favorites, you have. Add some favorites, you must! Yes, hmmm.</div> :
-    <div></div>;
 
   if (data.length) {
     cardListContent =
@@ -28,12 +24,17 @@ const CardList = ({ data, selectedTab, handleFavorites }) => {
         <div className='fix-flex-orphans'></div>
       </div>
   } else {
-    cardListContent = <img className='loader' src='./loader.gif' alt='Loading...' />
+    cardListContent = selectedTab !== 'FAVORITES' ? 
+      <img className='loader' src='./loader.gif' alt='Loading...' /> :
+      <div className='yoda-talk'>
+        <p>No favorites, you have.</p>
+        <p>Add some favorites, you must!</p>
+        <p>Yes, hmmm.</p>
+      </div>;
   }
 
   return (
     <div className={`card-list ${selectedTab.toLowerCase()}`}>
-      { yodaTalk }
       { cardListContent }
     </div>
   );
