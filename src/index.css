@@ -5,22 +5,23 @@
 header {
   display: flex;
   justify-content: space-between;
-  height: 150px;
+  height: 194px;
   padding-top: 15px;
-  margin-bottom: 60px;
-  /*background: no-repeat url('assets/header-image.jpg') right/auto 100%;*/
+  margin-bottom: 35px;
 }
 
 body {
-  padding: 50px 100px;
+  padding: 25px 25px;
   margin: 0;
   background-color: #000;
   font-family: 'Open Sans', sans-serif;
 }
 
 .trooper {
-  width: 125px;
+  width: 161px;
+  height: 194px;
   margin: 0 5px;
+
 }
 
 .title {
@@ -35,30 +36,20 @@ body {
 
 @media only screen and (max-width: 935px) {
 
+  img {
+    width: 87%;
+  }
+
+}
+
+@media only screen and (max-width: 731px) {
+
+  header {
+    justify-content: center;
+  }
+
   .trooper {
     display: none;
-  }
-
-  img {
-    width: 50%;
-  }
-
-  .title {
-    font-size: 111px;
-  }
-
-}
-
-@media only screen and (max-width: 871px) {
-
-
-
-}
-
-@media only screen and (max-width: 715px) {
-
-  .title {
-    font-size: 80px;
   }
 
 }
