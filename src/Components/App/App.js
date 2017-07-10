@@ -43,8 +43,6 @@ class App extends Component {
   }
 
   checkForDuplicates(article) {
-    console.log(article);
-    console.log(this.state.favorites.indexOf(article));
     return this.state.favorites.indexOf(article);
   }
 
