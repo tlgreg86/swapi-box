@@ -31,6 +31,14 @@
   text-align: justify;
 }
 
+@media only screen and (max-width: 550px) {
+
+  .scroll-container {
+    font-size: 1em;
+  }
+
+}
+
 @keyframes scroll-up {
   0% {
     transform: rotateX(20deg) translateY(100%);
